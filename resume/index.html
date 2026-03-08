@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retro Single Page Template</title>
+  <style>
+    :root {
+      --bg: #120c2c;
+      --panel: #1d1447;
+      --panel-2: #24195b;
+      --text: #fff7e6;
+      --yellow: #ffd23f;
+      --pink: #ff4fa3;
+      --cyan: #34d1ff;
+      --green: #49f28b;
+      --orange: #ff8c42;
+      --purple: #8b5cf6;
+      --border: #0a0718;
+      --shadow: 8px 8px 0 #000000;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255, 79, 163, 0.18), transparent 24%),
+        radial-gradient(circle at top right, rgba(52, 209, 255, 0.16), transparent 22%),
+        linear-gradient(180deg, #160d35 0%, #0f0b24 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(calc(100% - 2rem), var(--max));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10, 7, 24, 0.88);
+      backdrop-filter: blur(10px);
+      border-bottom: 3px solid var(--yellow);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.9rem 0;
+    }
+
+    .logo {
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+      color: var(--yellow);
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      display: inline-block;
+      padding: 0.7rem 1rem;
+      border: 3px solid var(--border);
+      background: var(--cyan);
+      color: #101010;
+      font-weight: 800;
+      text-transform: uppercase;
+      box-shadow: 4px 4px 0 #000;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .nav-links a:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 6px 6px 0 #000;
+    }
+
+    .hero {
+      padding: 5.5rem 0 3.5rem;
+    }
+
+    .hero-panel {
+      background: linear-gradient(135deg, var(--pink), var(--orange));
+      border: 4px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: clamp(1.5rem, 3vw, 3rem);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 1rem;
+      padding: 0.45rem 0.85rem;
+      background: var(--yellow);
+      color: #111;
+      font-weight: 900;
+      text-transform: uppercase;
+      border: 3px solid var(--border);
+      box-shadow: 4px 4px 0 #000;
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 6vw, 5.2rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #fff9ef;
+      text-shadow: 3px 3px 0 #000;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 60ch;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff7ef;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.95rem 1.2rem;
+      border: 3px solid var(--border);
+      font-weight: 900;
+      text-transform: uppercase;
+      box-shadow: 5px 5px 0 #000;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0 #000;
+    }
+
+    .btn-primary {
+      background: var(--yellow);
+      color: #111;
+    }
+
+    .btn-secondary {
+      background: var(--panel);
+      color: var(--text);
+    }
+
+    .hero-art {
+      min-height: 280px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.12), rgba(255,255,255,0.03)),
+        repeating-linear-gradient(45deg, rgba(0,0,0,0.15) 0 16px, rgba(255,255,255,0.02) 16px 32px),
+        var(--purple);
+      border: 4px solid var(--border);
+      box-shadow: 6px 6px 0 #000;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      border: 4px solid #000;
+      box-shadow: 6px 6px 0 rgba(0,0,0,0.55);
+    }
+
+    .shape.one {
+      width: 130px;
+      height: 130px;
+      background: var(--yellow);
+      border-radius: 50%;
+      top: 20px;
+      left: 22px;
+    }
+
+    .shape.two {
+      width: 140px;
+      height: 140px;
+      background: var(--cyan);
+      right: 22px;
+      top: 34px;
+      transform: rotate(15deg);
+    }
+
+    .shape.three {
+      width: 180px;
+      height: 70px;
+      background: var(--green);
+      left: 50%;
+      bottom: 28px;
+      transform: translateX(-50%) rotate(-8deg);
+    }
+
+    .section {
+      padding: 1.25rem 0 2.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      color: var(--yellow);
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .card {
+      padding: 1.4rem;
+      border: 4px solid var(--border);
+      box-shadow: var(--shadow);
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      line-height: 1.05;
+      text-shadow: 2px 2px 0 #000;
+    }
+
+    .card p {
+      font-weight: 700;
+    }
+
+    .card ul {
+      padding-left: 1.1rem;
+      font-weight: 700;
+    }
+
+    .card-1 { background: var(--cyan); color: #111; }
+    .card-2 { background: var(--yellow); color: #111; }
+    .card-3 { background: var(--green); color: #111; }
+    .card-4 { background: var(--pink); }
+    .card-5 { background: var(--orange); color: #111; }
+    .card-6 { background: var(--panel-2); }
+
+    .card .tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 0.35rem 0.65rem;
+      background: rgba(255,255,255,0.2);
+      border: 2px solid #000;
+      font-size: 0.8rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .site-footer {
+      margin-top: 2rem;
+      background: #090611;
+      border-top: 4px solid var(--pink);
+      padding: 1.5rem 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner p,
+    .footer-inner a {
+      font-weight: 800;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 920px) {
+      .hero-panel,
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 4rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+      }
+
+      .nav-links a,
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-art {
+        min-height: 220px;
+      }
+
+      .shape.one { width: 92px; height: 92px; }
+      .shape.two { width: 100px; height: 100px; }
+      .shape.three { width: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="logo">RetroRush</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#cards">Sections</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#footer">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-panel">
+        <div>
+          <span class="eyebrow">Single Page Template</span>
+          <h1>Bold Retro Design That Grabs Attention</h1>
+          <p>
+            A vibrant, one-page website starter with oversized typography, punchy colours,
+            chunky shadows, and six flexible card sections you can customise for services,
+            features, products, or portfolio content.
+          </p>
+          <div class="hero-actions">
+            <a href="#cards" class="btn btn-primary">Explore Sections</a>
+            <a href="#footer" class="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="shape one"></div>
+          <div class="shape two"></div>
+          <div class="shape three"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cards">
+      <div class="container">
+        <h2 class="section-title">Six Card-Style Sections</h2>
+        <div class="card-grid">
+          <article class="card card-1">
+            <span class="tag">Section 01</span>
+            <h3>Featured Service</h3>
+            <p>
+              Highlight a primary service, launch offer, or signature product with a short,
+              high-impact description.
+            </p>
+            <ul>
+              <li>Strong headline</li>
+              <li>Short supporting copy</li>
+              <li>Space for a CTA</li>
+            </ul>
+          </article>
+
+          <article class="card card-2">
+            <span class="tag">Section 02</span>
+            <h3>About Your Brand</h3>
+            <p>
+              Introduce your business, creative studio, campaign, or personal brand with a
+              bold visual block.
+            </p>
+            <p>
+              Use this area to explain what makes your style different.
+            </p>
+          </article>
+
+          <article class="card card-3">
+            <span class="tag">Section 03</span>
+            <h3>Top Benefits</h3>
+            <p>
+              Turn this card into a quick value proposition section for your audience.
+            </p>
+            <ul>
+              <li>Fast setup</li>
+              <li>Responsive layout</li>
+              <li>Easy to edit</li>
+            </ul>
+          </article>
+
+          <article class="card card-4">
+            <span class="tag">Section 04</span>
+            <h3>Case Study / Project</h3>
+            <p>
+              Feature a recent project, standout campaign, or impressive customer success story.
+            </p>
+            <p>
+              Add metrics, screenshots, or a link to more detail.
+            </p>
+          </article>
+
+          <article class="card card-5">
+            <span class="tag">Section 05</span>
+            <h3>Testimonials</h3>
+            <p>
+              Use this space for a review quote, partner endorsement, or social proof message.
+            </p>
+            <p>
+              “Exactly the kind of retro energy we wanted.”
+            </p>
+          </article>
+
+          <article class="card card-6" id="about">
+            <span class="tag">Section 06</span>
+            <h3>Contact / Call To Action</h3>
+            <p>
+              End with one clear next step: book, call, subscribe, buy, or send a message.
+            </p>
+            <p>
+              Replace this with a form embed, email details, or booking link.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="footer">
+    <div class="container footer-inner">
+      <p>© 2026 RetroRush. Built for bold brands.</p>
+      <div class="footer-links">
+        <a href="#top">Back to top</a>
+        <a href="mailto:hello@example.com">hello@example.com</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
